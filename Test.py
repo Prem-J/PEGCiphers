@@ -1,36 +1,27 @@
-import copy
-from Config import *
-from TextToKey import getTransformedKeys, determineTransformation
-from TextToCoords import convertTextIntoCoords
-from Encrypt import *
-import matplotlib.pyplot as plt
+from Transformations import *
 
-print(getTransformedKeys(testKey))
+initial = (7, 4)
 
-testDataToEncrypt = "This is a message that must be secured"
-originalCoords = convertTextIntoCoords(testDataToEncrypt)
-print(originalCoords[0])
-print(originalCoords[1])
-
-newCoords = encrypt(copy.deepcopy(originalCoords[0]), copy.deepcopy(originalCoords[1]), getTransformedKeys(testKey))
-# print(newCoords[0])
-# print(newCoords[1])
-
-backToOriginalCoords = decrypt(copy.deepcopy(newCoords[0]), copy.deepcopy(newCoords[1]), getTransformedKeys(testKey))
-x = backToOriginalCoords[0]
-y = backToOriginalCoords[1]
-
-for i in range(0, len(backToOriginalCoords[1])):
-    x[i] = round(x[i])
-    y[i] = round(y[i])
-
-print(x)
-print(y)
-
-# plt.figure(1)
-# plt.scatter(originalCoords[0], originalCoords[1])
+# newCoords = scaleObliqueNegative(initial, 1)
+# print(newCoords)
 #
-# plt.figure(2)
-# plt.scatter(newCoords[0], newCoords[1])
 #
-# plt.show()
+# newNewCoords = scaleObliqueNegative(newCoords, -0.5)
+# print(newNewCoords)
+
+
+amount = 7
+newCoords = rotateClockwise(initial, amount)
+print(newCoords)
+
+newNewCoords = rotateAnticlockwise(newCoords, amount)
+print(newNewCoords)
+
+# newCoords = scaleObliqueNegative(initial, 2)
+# print(newCoords)
+#
+#
+# newNewCoords = scaleObliqueNegative(newCoords, -0.6666666666)
+# print(newNewCoords)
+
+# TODO: -Rotation doesnt work in reverse mode

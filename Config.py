@@ -69,9 +69,9 @@ def runOppositeTranslation(transformation, amount, coords):
     elif transformation == 5:
         return scaleVertical(coords, (1 / amount))
     elif transformation == 6:
-        return scaleObliquePositive(coords, (1 / amount))
-    elif transformation == 7:  # nope
-        return scaleObliqueNegative(coords, (1 / amount))
+        return scaleObliquePositive(coords, (-1 * (amount / (amount + 1))))
+    elif transformation == 7:
+        return scaleObliqueNegative(coords, (-1 * (amount / (amount + 1))))
     elif transformation == 8:
         return reflectX(coords)
     elif transformation == 9:
@@ -80,7 +80,7 @@ def runOppositeTranslation(transformation, amount, coords):
         return reflectObliquePositive(coords)
     elif transformation == 11:
         return reflectObliqueNegative(coords)
-    elif transformation == 12:  # nope
+    elif transformation == 12:
         return rotateAnticlockwise(coords, amount)
     elif transformation == 13:
         return rotateClockwise(coords, amount)

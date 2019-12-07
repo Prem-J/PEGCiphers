@@ -97,7 +97,7 @@ def reflectObliqueNegative(initial):
 
 # C
 def rotateClockwise(initial, amount):
-    angle = (180 / 15) * (amount)
+    angle = (math.pi / 15) * amount
     radius = math.sqrt((initial[0] ** 2) + (initial[1] ** 2))
     try:
         theta = math.atan(initial[1] / initial[0])
@@ -110,7 +110,7 @@ def rotateClockwise(initial, amount):
 
 # D
 def rotateAnticlockwise(initial, amount):
-    angle = (180 / 15) * (amount)
+    angle = (math.pi / 15) * amount
     radius = math.sqrt((initial[0] ** 2) + (initial[1] ** 2))
     try:
         theta = math.atan(initial[1] / initial[0])

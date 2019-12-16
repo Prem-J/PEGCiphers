@@ -13,8 +13,8 @@ print(originalCoords[0])
 print(originalCoords[1])
 
 newCoords = encrypt(copy.deepcopy(originalCoords[0]), copy.deepcopy(originalCoords[1]), getTransformedKeys(testKey))
-# print(newCoords[0])
-# print(newCoords[1])
+print(newCoords[0])
+print(newCoords[1])
 
 backToOriginalCoords = decrypt(copy.deepcopy(newCoords[0]), copy.deepcopy(newCoords[1]), getTransformedKeys(testKey))
 x = backToOriginalCoords[0]

@@ -2,16 +2,9 @@ from Transformations import *
 import numpy as np
 import math
 
+initial = [0, 5.657]
 
-# initial = [0, 5.657]
-#
-# print(rotateAnticlockwise(initial, 0))
-# print(rotateClockwise(initial, 0))
-
-def rotate(angle, initial):
-    newX = (initial[0] * math.cos(angle)) - (initial[1] * math.sin(angle))
-    newY = (initial[1] * math.cos(angle)) + (initial[0] * math.sin(angle))
-    return (newX, newY)
+print(rotateAnticlockwise(initial, 5))
 
 
 # def rotate(angle, initial):
@@ -19,9 +12,15 @@ def rotate(angle, initial):
 #     initial = np.array([initial[0], initial[1]])
 #     return initial.dot(trans)
 #
-print(rotate(2.64, [4, -4]))
-print(rotate(-2.64, [-1.583981101622533, 5.430562021531719]))
+# print(rotate(2.64, [4, -4]))
+# print(rotate(-2.64, [-1.583981101622533, 5.430562021531719]))
 
+
+# print(rotateClockwise(initial, 0))
+
+def rotate(angle, initial):
+    newX = (initial[0] * math.cos(angle)) - (initial[1] * math.sin(angle))
+    newY = (initial[1] * math.cos(angle)) + (initial[0] * math.sin(angle))
 
 # newCoords = scaleObliqueNegative(initial, 1)
 # print(newCoords)

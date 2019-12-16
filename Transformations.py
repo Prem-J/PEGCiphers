@@ -125,20 +125,34 @@ def reflectObliqueNegative(initial):
 #     newY = radius * math.sin(theta - angle)
 #     return newX, newY
 
-def rotateAnticlockwise(initial, amount):
-    angle = (math.pi / 15) * -amount
-    trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
-    initial = np.array([initial[0], initial[1]])
-    newPoint = initial.dot(trans)
-    return newPoint[0], newPoint[1]
-
+# def rotateAnticlockwise(initial, amount):
+#     angle = (math.pi / 15) * -amount
+#     trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
+#     initial = np.array([initial[0], initial[1]])
+#     newPoint = initial.dot(trans)
+#     return newPoint[0], newPoint[1]
+#
+#
+# def rotateClockwise(initial, amount):
+#     angle = (math.pi / 15) * amount
+#     trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
+#     initial = np.array([initial[0], initial[1]])
+#     newPoint = initial.dot(trans)
+#     return newPoint[0], newPoint[1]
 
 def rotateClockwise(initial, amount):
+    angle = (math.pi / 15) * -amount
+    newX = (initial[0] * math.cos(angle)) - (initial[1] * math.sin(angle))
+    newY = (initial[1] * math.cos(angle)) + (initial[0] * math.sin(angle))
+    return newX, newY
+
+
+def rotateAnticlockwise(initial, amount):
     angle = (math.pi / 15) * amount
-    trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
-    initial = np.array([initial[0], initial[1]])
-    newPoint = initial.dot(trans)
-    return newPoint[0], newPoint[1]
+    newX = (initial[0] * math.cos(angle)) - (initial[1] * math.sin(angle))
+    newY = (initial[1] * math.cos(angle)) + (initial[0] * math.sin(angle))
+    return newX, newY
+
 # E
 def shiftObliquePositive(initial, amount):
     newx = initial[0] + amount

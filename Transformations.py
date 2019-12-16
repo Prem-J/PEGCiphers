@@ -28,13 +28,13 @@ def translateUp(initial, amount):
 
 # 4
 def scaleHorizontal(initial, amount):
-    newx = initial[0] * amount
+    newx = initial[0] * (amount)
     return (newx, initial[1])
 
 
 # 5
 def scaleVertical(initial, amount):
-    newy = initial[1] * amount
+    newy = initial[1] * (amount)
     return (initial[0], newy)
 
 

@@ -4,8 +4,10 @@ import math
 
 initial = [0, 5.657]
 
-print(rotateAnticlockwise(initial, 5))
+print(scaleHorizontal(initial, 0))
 
+for i in range(30, 0, -1):
+    print(i)
 
 # def rotate(angle, initial):
 #     trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])

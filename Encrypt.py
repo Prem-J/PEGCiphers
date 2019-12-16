@@ -21,7 +21,7 @@ def decrypt(xCoords, yCoords, keys):
     xPoints = xCoords
     yPoints = yCoords
     numberOfPoints = len(xPoints)
-    for i in range(0, len(keys)):
+    for i in range(len(keys) - 1, -1, -1):
         key = keys[i]
         x = xPoints[i % numberOfPoints]
         y = yPoints[i % numberOfPoints]

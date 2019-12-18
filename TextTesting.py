@@ -1,57 +1,50 @@
 import copy
-from random import randint
-
-from Config import *
-from TextToKey import getTransformedKeys, determineTransformation
-from TextToCoords import convertTextIntoCoords
-from Encrypt import *
-import matplotlib.pyplot as plt
-
-# for i in range(0, 16):
-#     for k in range(0, 16):
-#         x = randint(0, 100)
-#         y = randint(0, 100)
-#         newCoords = runTranslation(i, k, (x, y))
-#         convertBack = runOppositeTranslation(i, k, newCoords)
-#         OrigCoords = (round(convertBack[0]), round(convertBack[1]))
-#
-#         if (OrigCoords != (x, y)):
-#             print(i, k)
-#             print(x, y)
-#             print(newCoords)
-#             print(convertBack)
-#             print()
+import Config
+import TextToCoords
+import Encrypt
+import TextToKey
 
 
+def doThings(text, layers):
+    unecryptedCoords = TextToCoords.convertTextIntoCoords(text)
+    numberOfBytes = len(unecryptedCoords[0]) * layers
 
-print(getTransformedKeys(testKey))
+    key = Config.generateKey(str(numberOfBytes))
+    key = key.replace("\n", "")
+    funcKey = TextToKey.getTransformedKeys(key)
 
-testDataToEncrypt = "This is a message that must be secured"
-originalCoords = convertTextIntoCoords(testDataToEncrypt)
-print(originalCoords[0])
-print(originalCoords[1])
+    encrypted = Encrypt.encrypt(copy.deepcopy(unecryptedCoords[0]), copy.deepcopy(unecryptedCoords[1]), funcKey)
 
-newCoords = encrypt(copy.deepcopy(originalCoords[0]), copy.deepcopy(originalCoords[1]), getTransformedKeys(testKey))
-# print(newCoords[0])
-# print(newCoords[1])
+    decryptedData = Encrypt.decrypt(copy.deepcopy(encrypted[0]), copy.deepcopy(encrypted[1]), funcKey)
+    x = [round(list(decryptedData[0])[i]) for i in range(0, len(decryptedData[0]))]
+    y = [round(list(decryptedData[1])[i]) for i in range(0, len(decryptedData[1]))]
+    decrypted = [x, y]
 
-backToOriginalCoords = decrypt(copy.deepcopy(newCoords[0]), copy.deepcopy(newCoords[1]), getTransformedKeys(testKey))
-x = backToOriginalCoords[0]
-y = backToOriginalCoords[1]
+    decryptedText = TextToCoords.convertCoordsIntoText(decrypted[0], decrypted[1])
 
-for i in range(0, len(backToOriginalCoords[1])):
-    x[i] = round(x[i])
-    y[i] = round(y[i])
+    dict = {
+        "origX": unecryptedCoords[0],
+        "origY": unecryptedCoords[1],
+        "hexKey": key,
+        "encrypX": encrypted[0],
+        "encrypY": encrypted[1],
+        "decrypX": decrypted[0],
+        "decrypY": decrypted[1],
+        "decrypText": decryptedText
+    }
 
-print(x)
-print(y)
+    return dict
 
-# plt.figure(1)
-# plt.scatter(originalCoords[0], originalCoords[1])
-#
-# plt.figure(2)
-# plt.scatter(newCoords[0], newCoords[1])
-#
-# plt.show()
 
-# TODO: Fix transformation number 4 which does not map back to correct values
+layers = int(input("how many layers of security would you like?"))
+unencryptedData = input("What would you like to encrypt?")
+stuff = doThings(unencryptedData, layers)
+# Just to see all output
+print(stuff["origX"])
+print(stuff["origY"])
+print(stuff["hexKey"])
+print(stuff["encrypX"])
+print(stuff["encrypY"])
+print(stuff["decrypX"])
+print(stuff["decrypY"])
+print(stuff["decrypText"])

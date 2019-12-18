@@ -162,3 +162,17 @@ def shiftObliqueNegative(initial, amount, opposite):
     newx = initial[0] - amt
     newy = initial[1] - amt
     return newx, newy
+
+
+transformationList = [translateLeft, translateRight, translateDown, translateUp, scaleHorizontal, scaleVertical,
+                      scaleObliquePositive, scaleObliqueNegative, reflectX, reflectY, reflectObliquePositive,
+                      reflectObliqueNegative, rotateClockwise, rotateAnticlockwise, shiftObliquePositive,
+                      shiftObliqueNegative]
+
+
+def runTranslation(transformation, amount, coords):
+    return transformationList[transformation](coords, amount, False)
+
+
+def runOppositeTranslation(transformation, amount, coords):
+    return transformationList[transformation](coords, amount, True)

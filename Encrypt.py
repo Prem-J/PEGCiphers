@@ -1,5 +1,4 @@
-from Config import runTranslation, runOppositeTranslation
-
+from Transformations import runTranslation, runOppositeTranslation
 
 def encrypt(xCoords, yCoords, keys):
     xPoints = xCoords

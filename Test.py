@@ -1,7 +1,8 @@
 # from Transformations import *
 import numpy as np
 import math
-from Config import *
+# from Config import *
+import TextToCoords
 
 initial = [0, 4]
 
@@ -14,12 +15,25 @@ initial = [0, 4]
 # print(newCoords)
 # backToOriginal = runOppositeTranslation(3, 5, newCoords)
 # print(backToOriginal)
+print(hex(ord('n')))
+test = "1C1581EAAF61CD08D4AB9E52CB57FF03581227FD353A8D48F5215D3D98324E0D\n378999C38951310A4F2E7BD56E37B83A2EF2CCE29F30491E99598FB3ACA6B90F"
+print(test)
 
-for i in range(16):
-    newCoords = runTranslation(i, 5, initial)
-    # print(newCoords)
-    backToOriginal = runOppositeTranslation(i, 5, newCoords)
-    print(backToOriginal)
+print(test.replace("\n", ""))
+
+print(hex(ord('a')))
+print(chr(int('61', 16)))
+
+test = TextToCoords.convertTextIntoCoords("this is a test string")
+print(test)
+print(TextToCoords.convertCoordsIntoText(test[0], test[1]))
+
+
+# for i in range(16):
+#     newCoords = runTranslation(i, 5, initial)
+#     # print(newCoords)
+#     backToOriginal = runOppositeTranslation(i, 5, newCoords)
+#     print(backToOriginal)
 
 # def rotate(angle, initial):
 #     trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])

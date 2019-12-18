@@ -11,7 +11,6 @@ def encrypt(xCoords, yCoords, keys):
         y = yPoints[i % numberOfPoints]
 
         newCoords = runTranslation(key[0], key[1], (x, y))
-        # print(newCoords)
         xPoints[i % numberOfPoints] = newCoords[0]
         yPoints[i % numberOfPoints] = newCoords[1]
     return xPoints, yPoints

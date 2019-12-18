@@ -1,13 +1,25 @@
-from Transformations import *
+# from Transformations import *
 import numpy as np
 import math
+from Config import *
 
-initial = [0, 5.657]
+initial = [0, 4]
 
-print(scaleHorizontal(initial, 0))
+# print(scaleHorizontal(initial, 0))
+#
+# for i in range(30, 0, -1):
+#     print(i)
 
-for i in range(30, 0, -1):
-    print(i)
+# newCoords = runTranslation(3, 5, initial)
+# print(newCoords)
+# backToOriginal = runOppositeTranslation(3, 5, newCoords)
+# print(backToOriginal)
+
+for i in range(16):
+    newCoords = runTranslation(i, 5, initial)
+    # print(newCoords)
+    backToOriginal = runOppositeTranslation(i, 5, newCoords)
+    print(backToOriginal)
 
 # def rotate(angle, initial):
 #     trans = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])

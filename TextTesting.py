@@ -25,12 +25,15 @@ def doThings(text, layers):
     dict = {
         "origX": unecryptedCoords[0],
         "origY": unecryptedCoords[1],
+        "original": unecryptedCoords,
         "hexKey": key,
-        "encrypX": encrypted[0],
-        "encrypY": encrypted[1],
-        "decrypX": decrypted[0],
-        "decrypY": decrypted[1],
-        "decrypText": decryptedText
+        "encrypted": encrypted,
+        "encryptedX": encrypted[0],
+        "encryptedY": encrypted[1],
+        "decrypted": decrypted,
+        "decryptedX": decrypted[0],
+        "decryptedY": decrypted[1],
+        "decryptedText": decryptedText
     }
 
     return dict
@@ -43,8 +46,8 @@ stuff = doThings(unencryptedData, layers)
 print(stuff["origX"])
 print(stuff["origY"])
 print(stuff["hexKey"])
-print(stuff["encrypX"])
-print(stuff["encrypY"])
-print(stuff["decrypX"])
-print(stuff["decrypY"])
-print(stuff["decrypText"])
+print(stuff["encryptedX"])
+print(stuff["encryptedY"])
+print(stuff["decryptedX"])
+print(stuff["decryptedY"])
+print(stuff["decryptedText"])

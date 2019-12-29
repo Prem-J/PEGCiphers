@@ -169,7 +169,6 @@ transformationList = [translateLeft, translateRight, translateDown, translateUp,
                       reflectObliqueNegative, rotateClockwise, rotateAnticlockwise, shiftObliquePositive,
                       shiftObliqueNegative]
 
-
 def runTranslation(transformation, amount, coords):
     return transformationList[transformation](coords, amount, False)
 
